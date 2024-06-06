@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Project</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="navbar container">
+        <div class="logo">Web Topics</div>
+        <div class="nav-buttons">
+          <div class="nav-button">
+            <ion-icon name="moon-outline"></ion-icon>
+            <button id="toggleMode">Dark Mode</button>
+          </div>
+          <div class="nav-button">
+            <ion-icon name="heart"></ion-icon>
+            <button>Favourites</button>
+          </div>
+        </div>
+      </div>
+      <section class="title-background">
+        <div class="title-section">
+          <div class="content">
+            <h2>Welcome to our website!</h2>
+            <p>We have a new design that’s fresh, modern, and easy to use.</p>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <div class="container searchBox">
+      <div class="search">
+        <ion-icon name="search-outline"></ion-icon>
+        <input
+          type="text"
+          id="search"
+          placeholder="Search for a topic..."
+          class="search-input"
+        />
+      </div>
+      <div class="sort-by">
+        <div class="sort">
+          <label for="sort">Sort by:</label>
+          <select name="sort" id="sort">
+            <option value="">Default</option>
+            <option value="newest">Name</option>
+            <option value="oldest">Rating</option>
+          </select>
+        </div>
+        <div class="sort">
+          <label for="sort">Filter by:</label>
+          <select name="sort" id="sort">
+            <option value="">Default</option>
+            <option value="newest">Author</option>
+            <option value="oldest">Rating</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <p id="number-of-cards" class="container numOfCards"></p>
+
+    <main id="card-container" class="container"></main>
+    <!-- <script src="data.js"></script> -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
