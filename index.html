@@ -34,39 +34,39 @@
         </div>
       </section>
     </header>
-
-    <div class="container searchBox">
-      <div class="search">
-        <ion-icon name="search-outline"></ion-icon>
-        <input
-          type="text"
-          id="search"
-          placeholder="Search for a topic..."
-          class="search-input"
-        />
-      </div>
-      <div class="sort-by">
-        <div class="sort">
-          <label for="sort">Sort by:</label>
-          <select name="sort" id="sort">
-            <option value="">Default</option>
-            <option value="newest">Name</option>
-            <option value="oldest">Rating</option>
-          </select>
+    <main class="container">
+      <div class="searchBox">
+        <div class="search">
+          <ion-icon name="search-outline"></ion-icon>
+          <input
+            type="text"
+            id="search"
+            placeholder="Search for a topic..."
+            class="search-input"
+          />
         </div>
-        <div class="sort">
-          <label for="sort">Filter by:</label>
-          <select name="sort" id="sort">
-            <option value="">Default</option>
-            <option value="newest">Author</option>
-            <option value="oldest">Rating</option>
-          </select>
+        <div class="sort-by">
+          <div class="sort">
+            <label for="sort">Sort by:</label>
+            <select name="sort" id="sort">
+              <option value="">Default</option>
+              <option value="newest">Name</option>
+              <option value="oldest">Rating</option>
+            </select>
+          </div>
+          <div class="sort">
+            <label for="sort">Filter by:</label>
+            <select name="sort" id="sort">
+              <option value="">Default</option>
+              <option value="newest">Author</option>
+              <option value="oldest">Rating</option>
+            </select>
+          </div>
         </div>
       </div>
-    </div>
-    <p id="number-of-cards" class="container numOfCards"></p>
-
-    <main id="card-container" class="container"></main>
+      <p id="number-of-cards" class="container numOfCards"></p>
+      <div id="card-container"></div>
+    </main>
     <!-- <script src="data.js"></script> -->
     <script
       type="module"
