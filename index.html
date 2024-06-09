@@ -11,23 +11,23 @@
     />
   </head>
   <body>
-    <header>
-      <div class="navbar container">
-        <div class="logo">Web Topics</div>
-        <div class="nav-buttons">
-          <div class="nav-button">
+    <header class="header">
+      <nav class="navbar container">
+        <div class="navbar__logo">Web Topics</div>
+        <div class="navbar__nav-buttons">
+          <div id="toggleMode" class="navbar__nav-button">
             <ion-icon name="moon-outline"></ion-icon>
-            <button id="toggleMode">Dark Mode</button>
+            <button>Dark Mode</button>
           </div>
-          <div class="nav-button">
+          <div class="navbar__nav-button">
             <ion-icon name="heart"></ion-icon>
             <button>Favourites</button>
           </div>
         </div>
-      </div>
-      <section class="title-background">
-        <div class="title-section">
-          <div class="content">
+      </nav>
+      <section class="header__title-background">
+        <div class="header__title-section">
+          <div class="header__content">
             <h2>Welcome to our website!</h2>
             <p>We have a new design that’s fresh, modern, and easy to use.</p>
           </div>
@@ -35,31 +35,31 @@
       </section>
     </header>
     <main class="container">
-      <div class="searchBox">
-        <div class="search">
+      <div class="main__searchBox">
+        <div class="main__search">
           <ion-icon name="search-outline"></ion-icon>
           <input
             type="text"
             id="search"
             placeholder="Search for a topic..."
-            class="search-input"
+            class="main__search-input"
           />
         </div>
-        <div class="sort-by">
-          <div class="sort">
-            <label for="sort">Sort by:</label>
-            <select name="sort" id="sort">
-              <option value="">Default</option>
-              <option value="newest">Name</option>
-              <option value="oldest">Rating</option>
+        <div class="main__sort-by">
+          <div class="main__sort">
+            <label for="sort-by">Sort by:</label>
+            <select name="sort-by" id="sort-by">
+              <option value="default">Default</option>
+              <option value="name">Name</option>
+              <option value="rating">Rating</option>
             </select>
           </div>
-          <div class="sort">
-            <label for="sort">Filter by:</label>
-            <select name="sort" id="sort">
-              <option value="">Default</option>
-              <option value="newest">Author</option>
-              <option value="oldest">Rating</option>
+          <div class="main__sort">
+            <label for="filter-by">Filter by:</label>
+            <select name="filter-by" id="filter-by">
+              <option value="default">Default</option>
+              <option value="author">Author</option>
+              <option value="rating">Rating</option>
             </select>
           </div>
         </div>
