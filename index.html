@@ -19,7 +19,7 @@
             <ion-icon name="moon-outline"></ion-icon>
             <button>Dark Mode</button>
           </div>
-          <div class="navbar__nav-button">
+          <div class="navbar__nav-button" id="toggle-favorites">
             <ion-icon name="heart"></ion-icon>
             <button>Favourites</button>
           </div>
@@ -34,19 +34,20 @@
         </div>
       </section>
     </header>
+
     <main class="container">
-      <div class="main__searchBox">
-        <div class="main__search">
+      <div class="searchBar">
+        <div class="searchBar__search">
           <ion-icon name="search-outline"></ion-icon>
           <input
             type="text"
             id="search"
             placeholder="Search for a topic..."
-            class="main__search-input"
+            class="searchBar__search-input"
           />
         </div>
-        <div class="main__sort-by">
-          <div class="main__sort">
+        <div class="searchBar__sort-by">
+          <div class="searchBar__sort">
             <label for="sort-by">Sort by:</label>
             <select name="sort-by" id="sort-by">
               <option value="default">Default</option>
@@ -54,7 +55,7 @@
               <option value="rating">Rating</option>
             </select>
           </div>
-          <div class="main__sort">
+          <div class="searchBar__sort">
             <label for="filter-by">Filter by:</label>
             <select name="filter-by" id="filter-by">
               <option value="default">Default</option>
@@ -67,7 +68,13 @@
       <p id="number-of-cards" class="container numOfCards"></p>
       <div id="card-container"></div>
     </main>
-    <!-- <script src="data.js"></script> -->
+    <article class="favorite-items" id="favorite_items-container">
+      <div class="container">
+        <h3>Favorite Items</h3>
+        <div class="favorite-items__container" id="favorite_items"></div>
+      </div>
+    </article>
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
