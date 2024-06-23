@@ -14,14 +14,14 @@
   <body>
     <header class="header">
       <nav class="navbar container">
-        <div class="navbar__logo">Web Topics</div>
+        <a href="/index.html" class="navbar__logo"> Web Topics </a>
         <div class="navbar__nav-buttons">
           <div id="toggleMode" class="navbar__nav-button">
             <ion-icon name="moon-outline"></ion-icon>
             <button>Dark Mode</button>
           </div>
           <div class="navbar__nav-button" id="toggle-favorites">
-            <ion-icon name="heart"></ion-icon>
+            <ion-icon name="heart-outline"></ion-icon>
             <button>Favourites</button>
           </div>
         </div>
@@ -74,12 +74,15 @@
       </div>
       <div class="details__footer">
         Developed with
-        <ion-icon name="heart" style="color: red; font-size: 16px"></ion-icon> ©
-        2023
+        <ion-icon
+          name="heart"
+          style="color: rgb(167, 14, 14); font-size: 16px"
+        ></ion-icon>
+        © 2023
       </div>
     </div>
 
-    <article class="favorite-items" id="favorite_items-container">
+    <article class="favorite-items hidden" id="favorite_items-container">
       <div class="container">
         <h3>Favorite Items</h3>
         <div class="favorite-items__container" id="favorite_items"></div>

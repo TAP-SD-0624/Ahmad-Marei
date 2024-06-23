@@ -1,4 +1,4 @@
-import { data } from "./data.js";
+import { data } from "/data.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("toggleMode");
@@ -9,11 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const favoriteContainer = document.getElementById("favorite_items");
   const toggleFavorites = document.getElementById("toggle-favorites");
   const favoriteItems = document.getElementById("favorite_items-container");
+  const isDarkMode = JSON.parse(localStorage.getItem("dark-mode"));
+  document.body.classList.toggle("dark-mode", isDarkMode);
   toggleButton.addEventListener("click", function () {
     document.body.classList.toggle("dark-mode");
+    localStorage.setItem(
+      "dark-mode",
+      document.body.classList.contains("dark-mode")
+    );
   });
   toggleFavorites.addEventListener("click", function () {
     favoriteItems.classList.toggle("hidden");
+    updateFavoriteCards();
   });
   searchInput.addEventListener("input", function () {
     updateCards(searchInput.value.trim().toLowerCase());
@@ -51,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateFavoriteCards() {
     favoriteContainer.innerHTML = ""; // Clear the container before adding new filtered cards
-    const favoriteData = data.slice(0, 3);
+    const favoriteData = JSON.parse(localStorage.getItem("favorites")) || [];
 
     favoriteData.forEach((item) => {
       const card = document.createElement("div");
@@ -91,16 +98,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function generateFavoriteCard(item) {
+    const currentPath = window.location.pathname;
+    const isDetailsPage = currentPath.includes("details");
+    const imageSrc = isDetailsPage ? `../${item.image}` : item.image;
+
     return `
-    <img src="${item.image}" alt="${item.topic}" class="card-image">
+    <a href="/details/ItemDetails.html?id=${encodeURIComponent(
+      item.id
+    )}" class="card-link">
+    <div class="card">
+    <img src="${imageSrc}" alt="${item.topic}" class="card-image">
     <div class="card-content">
       <p class="card-title truncate">${item.topic}</p>
       <div class="card-rating">
         ${generateStars(item.rating)}
       </div>
     </div>
+    </div>
+    </a>
     `;
   }
   updateCards("");
-  updateFavoriteCards("");
 });

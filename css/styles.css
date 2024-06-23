@@ -6,6 +6,11 @@
   --lines-color: #dddddd;
   --body-text: #333333;
   --heart-color: #dc143c;
+  --gold-color: #e89c31;
+  --detail-bg-default: #ffffff;
+  --detail-body-text: #333333;
+  --detail-lines-color: #dddddd;
+  --detail-text-white: #ffffff;
   --font-weight-light: 200;
   --font-weight-regular: 400;
   --font-weight-bold: 700;
@@ -26,6 +31,7 @@ body {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 16px;
+  flex: 1;
 }
 
 /* Header Navbar */
@@ -45,6 +51,7 @@ header {
   font-size: 16px;
   font-weight: var(--font-weight-regular);
   color: var(--brand-primary);
+  text-decoration: none;
 }
 
 .navbar__nav-buttons {
@@ -220,7 +227,7 @@ header {
 }
 
 .card-rating ion-icon {
-  color: #e89c31; /* Gold color for stars */
+  color: var(--gold-color);
 }
 
 .card-author {
@@ -236,6 +243,7 @@ header {
   --lines-color: #000000;
   --body-text: #ededed;
   --heart-color: #dc143c;
+  --gold-color: #e89c31;
 }
 
 /* SearchBar */

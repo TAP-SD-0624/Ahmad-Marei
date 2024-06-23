@@ -36,26 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
         ? "Remove from Favorites"
         : "Add to Favorites";
 
-      addToFavoritesButton.addEventListener("click", () => {
-        const isItemInFavorites = favorites.find(
-          (favorite) => favorite.id === item.id
-        );
-        if (!isItemInFavorites) {
-          // If item does not exist in favorites, add it
-          favorites.push(item);
-          localStorage.setItem("favorites", JSON.stringify(favorites));
-          alert("Item added to favorites!");
-          buttonText.innerText = "Remove from Favorites";
-        } else {
-          // If item exists in favorites, remove it
-          const updatedFavorites = favorites.filter(
-            (favorite) => favorite.id !== item.id
-          );
-          localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-          alert("Item removed from favorites!");
-          buttonText.innerText = "Add to Favorites";
-        }
-      });
+      addToFavoritesButton.addEventListener(
+        "click",
+        changeFavoriteButton.bind(null, item, buttonText)
+      );
     } else {
       document.querySelector(".details").innerText = "Item not found.";
     }
@@ -68,15 +52,9 @@ function generateStars(rating) {
   const fullStars = Math.floor(rating);
   const halfStars = rating % 1 ? 1 : 0;
   const emptyStars = 5 - fullStars - halfStars;
-  return `${'<ion-icon name="star" style="color:#e89c31" ></ion-icon>'.repeat(
-    fullStars
-  )}
-          ${'<ion-icon name="star-half" style="color:#e89c31"></ion-icon>'.repeat(
-            halfStars
-          )}
-          ${'<ion-icon name="star-outline" style="color:#e89c31"></ion-icon>'.repeat(
-            emptyStars
-          )}`;
+  return `${'<ion-icon name="star"  ></ion-icon>'.repeat(fullStars)}
+          ${'<ion-icon name="star-half" ></ion-icon>'.repeat(halfStars)}
+          ${'<ion-icon name="star-outline" ></ion-icon>'.repeat(emptyStars)}`;
 }
 
 function generateSubTopics(subTopics) {
@@ -90,4 +68,26 @@ function generateSubTopics(subTopics) {
   `
     )
     .join("");
+}
+
+function changeFavoriteButton(item, buttonText) {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const isItemInFavorites = favorites.find(
+    (favorite) => favorite.id === item.id
+  );
+  if (!isItemInFavorites) {
+    // If item does not exist in favorites, add it
+    favorites.push(item);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    alert("Item added to favorites!");
+    buttonText.innerText = "Remove from Favorites";
+  } else {
+    // If item exists in favorites, remove it
+    const updatedFavorites = favorites.filter(
+      (favorite) => favorite.id !== item.id
+    );
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    alert("Item removed from favorites!");
+    buttonText.innerText = "Add to Favorites";
+  }
 }
