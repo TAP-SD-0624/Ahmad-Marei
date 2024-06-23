@@ -179,9 +179,13 @@ header {
   text-overflow: ellipsis;
   width: 100%; /* Adjust the width as necessary */
 }
+.card-link {
+  text-decoration: none;
+}
 
 .card:hover {
   transform: scale(1.05);
+  cursor: pointer !important;
 }
 
 .card-image {
@@ -339,7 +343,6 @@ header {
 .hidden {
   display: none;
 }
-/* Details */
 
 @media only screen and (max-width: 768px) {
   #card-container {

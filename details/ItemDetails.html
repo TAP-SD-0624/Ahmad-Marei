@@ -35,40 +35,50 @@
         </div>
       </section>
     </header>
-
-    <main class="container">
-      <div class="searchBar">
-        <div class="searchBar__search">
-          <ion-icon name="search-outline"></ion-icon>
-          <input
-            type="text"
-            id="search"
-            placeholder="Search for a topic..."
-            class="searchBar__search-input"
-          />
-        </div>
-        <div class="searchBar__sort-by">
-          <div class="searchBar__sort">
-            <label for="sort-by">Sort by:</label>
-            <select name="sort-by" id="sort-by">
-              <option value="default">Default</option>
-              <option value="name">Name</option>
-              <option value="rating">Rating</option>
-            </select>
+    <div class="details">
+      <div class="details__header-container">
+        <div class="details__container">
+          <div class="details__header">
+            <h4 class="details__subtitle"></h4>
+            <h2 class="details__title"></h2>
+            <div class="details__rating"></div>
+            <p class="details__description"></p>
           </div>
-          <div class="searchBar__sort">
-            <label for="filter-by">Filter by:</label>
-            <select name="filter-by" id="filter-by">
-              <option value="default">Default</option>
-              <option value="author">Author</option>
-              <option value="rating">Rating</option>
-            </select>
+          <div class="details__sidebar">
+            <img class="details__image" src="" alt="" />
+            <p class="details__author">
+              <strong></strong> by
+              <a href="#" class="details__link"></a>
+            </p>
+            <div class="details__button-container">
+              <p class="details__topic">Interested about this topic?</p>
+              <button class="details__favorite-button" id="addToFavorites">
+                <span>Add to Favorites</span>
+                <ion-icon
+                  name="heart-outline"
+                  class="details__heart"
+                ></ion-icon>
+              </button>
+              <p class="details__credits">Unlimited Credits</p>
+            </div>
           </div>
         </div>
       </div>
-      <p id="number-of-cards" class="container numOfCards"></p>
-      <div id="card-container"></div>
-    </main>
+      <div class="details__main-content details__container">
+        <div class="details__sub-topics-container">
+          <div class="details__sub-topics">
+            <h2 class="details__sub-title"></h2>
+            <ul class="details__sub-list"></ul>
+          </div>
+        </div>
+      </div>
+      <div class="details__footer">
+        Developed with
+        <ion-icon name="heart" style="color: red; font-size: 16px"></ion-icon> ©
+        2023
+      </div>
+    </div>
+
     <article class="favorite-items" id="favorite_items-container">
       <div class="container">
         <h3>Favorite Items</h3>
@@ -84,6 +94,7 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
-    <script src="script.js" type="module"></script>
+    <script src="ItemDetails.js" type="module"></script>
+    <script src="/script.js" type="module"></script>
   </body>
 </html>

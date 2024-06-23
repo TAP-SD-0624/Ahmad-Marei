@@ -72,6 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function generateCard(item) {
     return `
+    <a href="/details/ItemDetails.html?id=${encodeURIComponent(
+      item.id
+    )}" class="card-link">
+    <div class="card">
     <img src="${item.image}" alt="${item.topic}" class="card-image ">
     <div class="card-content">
       <h3 class="card-subtitle truncate">${item.category}</h3>
@@ -81,6 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
       <p class="card-author  ">Author: ${item.name}</p>
     </div>
+    </div>
+    </a>
     `;
   }
 
