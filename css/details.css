@@ -19,6 +19,7 @@
 .details__title {
   margin: 0;
   font-size: 18px;
+  color: var(--detail-text-white);
 }
 
 .details__rating {
@@ -33,6 +34,7 @@
   font-size: 14px;
   line-height: 1.5;
   max-width: 500px;
+  color: var(--detail-text-white);
 }
 
 .details__main-content {
