@@ -1,3 +1,7 @@
+.navbar__logo.logo {
+  cursor: pointer;
+}
+
 .details {
   position: relative;
 }
