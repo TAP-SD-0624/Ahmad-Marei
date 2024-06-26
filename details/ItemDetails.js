@@ -1,4 +1,4 @@
-import { data } from "../data.js";
+import { data } from "../mock/data.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);

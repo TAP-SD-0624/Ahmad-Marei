@@ -344,16 +344,16 @@ header {
   padding: 0;
   justify-content: space-between;
 }
-.card-favorite .card-content {
+.card__favorite .card-content {
   padding-bottom: 12px;
 }
-.card-favorite .card-image {
+.card__favorite .card-image {
   height: 80px;
 }
-.card-favorite .card-title {
+.card__favorite.card-title {
   margin: 0;
 }
-.card-favorite .card-rating {
+.card__favorite .card-rating {
   margin-top: 0px;
 }
 .hidden {

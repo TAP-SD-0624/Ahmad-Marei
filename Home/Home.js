@@ -1,4 +1,4 @@
-import { data } from "/data.js";
+import { data } from "/mock/data.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("toggleMode");
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     favoriteData.forEach((item) => {
       const card = document.createElement("div");
-      card.className = "card card-favorite";
+      card.className = "card card__favorite";
       card.innerHTML = generateFavoriteCard(item);
       favoriteContainer.appendChild(card);
     });
@@ -100,14 +100,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function generateFavoriteCard(item) {
     const currentPath = window.location.pathname;
     const isDetailsPage = currentPath.includes("details");
-    const imageSrc = isDetailsPage ? `../${item.image}` : item.image;
 
     return `
     <a href="/details/ItemDetails.html?id=${encodeURIComponent(
       item.id
     )}" class="card-link">
     <div class="card">
-    <img src="${imageSrc}" alt="${item.topic}" class="card-image">
+    <img src="${item.image}" alt="${item.topic}" class="card-image">
     <div class="card-content">
       <p class="card-title truncate">${item.topic}</p>
       <div class="card-rating">
