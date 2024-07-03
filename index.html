@@ -12,6 +12,7 @@
     />
   </head>
   <body>
+    <div id="loading" class="loading hidden">Loading...</div>
     <header class="header">
       <nav class="navbar container">
         <div class="navbar__logo">Web Topics</div>
@@ -35,7 +36,6 @@
         </div>
       </section>
     </header>
-
     <main class="container main">
       <div class="searchBar">
         <div class="searchBar__search">
@@ -52,16 +52,14 @@
             <label for="sort-by">Sort by:</label>
             <select name="sort-by" id="sort-by">
               <option value="default">Default</option>
-              <option value="name">Name</option>
-              <option value="rating">Rating</option>
+              <option value="title">Topic Title</option>
+              <option value="author">Author Name</option>
             </select>
           </div>
           <div class="searchBar__sort">
             <label for="filter-by">Filter by:</label>
             <select name="filter-by" id="filter-by">
               <option value="default">Default</option>
-              <option value="author">Author</option>
-              <option value="rating">Rating</option>
             </select>
           </div>
         </div>

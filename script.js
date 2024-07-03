@@ -1,5 +1,3 @@
-import { data } from "/mock/data.js";
-
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("toggleMode");
   const searchInput = document.getElementById("search");
@@ -10,6 +8,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const toggleFavorites = document.getElementById("toggle-favorites");
   const favoriteItems = document.getElementById("favorite_items-container");
   const isDarkMode = JSON.parse(localStorage.getItem("dark-mode"));
+  const numberOfCards = document.getElementById("number-of-cards");
+  const loadingIndicator = document.getElementById("loading");
+
+  showLoading();
+  fetch("https://tap-web-1.herokuapp.com/topics/list")
+    .then((response) => response.json())
+    .then((data) => {
+      hideLoading();
+      populateFilterOptions(data);
+      updateCards();
+      numberOfCards.innerHTML = `"${data.length}" Web Topics Found`;
+    })
+    .catch((error) => {
+      hideLoading();
+      console.error("Error fetching data:", error);
+    });
+
   document.body.classList.toggle("dark-mode", isDarkMode);
   toggleButton.addEventListener("click", function () {
     document.body.classList.toggle("dark-mode");
@@ -23,37 +38,64 @@ document.addEventListener("DOMContentLoaded", function () {
     updateFavoriteCards();
   });
   searchInput.addEventListener("input", function () {
-    updateCards(searchInput.value.trim().toLowerCase());
+    updateCards();
   });
 
   sortBySelect.addEventListener("change", function () {
-    // updateDisplay();
+    updateCards();
   });
 
   filterBySelect.addEventListener("change", function () {
-    // updateDisplay();
+    updateCards();
   });
-  const numberOfCards = document.getElementById("number-of-cards");
 
-  numberOfCards.innerHTML = `"${data.length}" Web Topics Found`;
-
-  function updateCards(query) {
-    cardContainer.innerHTML = "";
-    const filteredData = data.filter(
-      (item) =>
-        item.topic.toLowerCase().includes(query) ||
-        item.category.toLowerCase().includes(query)
-    );
-
-    filteredData.forEach((item) => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = generateCard(item);
-      cardContainer.appendChild(card);
+  function populateFilterOptions(topicsData) {
+    const categories = [...new Set(topicsData.map((item) => item.category))];
+    categories.forEach((category) => {
+      const option = document.createElement("option");
+      option.value = category;
+      option.textContent = category;
+      filterBySelect.appendChild(option);
     });
+  }
 
-    const numberOfCards = document.getElementById("number-of-cards");
-    numberOfCards.innerHTML = `"${filteredData.length}" Web Topics Found`;
+  function updateCards() {
+    const query = searchInput.value.trim().toLowerCase();
+    let filteredData = [];
+    fetch("https://tap-web-1.herokuapp.com/topics/list?phrase=" + query)
+      .then((response) => response.json())
+      .then((data) => {
+        filteredData = data;
+        const sortBy = sortBySelect.value;
+        const filterBy = filterBySelect.value;
+
+        if (filterBy !== "default") {
+          filteredData = filteredData.filter(
+            (item) => item.category === filterBy
+          );
+        }
+
+        filteredData.sort((a, b) => {
+          if (sortBy === "title") {
+            return a.topic.localeCompare(b.topic);
+          } else if (sortBy === "author") {
+            return a.name.localeCompare(b.name);
+          }
+          return 0;
+        });
+
+        cardContainer.innerHTML = "";
+        filteredData.forEach((item) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = generateCard(item);
+          cardContainer.appendChild(card);
+        });
+        numberOfCards.innerHTML = `"${filteredData.length}" Web Topics Found`;
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }
 
   function updateFavoriteCards() {
@@ -83,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
       item.id
     )}" class="card-link">
     <div class="card">
-    <img src="${item.image}" alt="${item.topic}" class="card-image ">
+    <img src="/images/${item.image}" alt="${item.topic}" class="card-image ">
     <div class="card-content">
       <h3 class="card-subtitle truncate">${item.category}</h3>
       <p class="card-title truncate">${item.topic}</p>
@@ -106,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
       item.id
     )}" class="card-link">
     <div class="card">
-    <img src="${item.image}" alt="${item.topic}" class="card-image">
+    <img src="/images/${item.image}" alt="${item.topic}" class="card-image">
     <div class="card-content">
       <p class="card-title truncate">${item.topic}</p>
       <div class="card-rating">
@@ -117,5 +159,12 @@ document.addEventListener("DOMContentLoaded", function () {
     </a>
     `;
   }
-  updateCards("");
+
+  function showLoading() {
+    loadingIndicator.classList.remove("hidden");
+  }
+
+  function hideLoading() {
+    loadingIndicator.classList.add("hidden");
+  }
 });

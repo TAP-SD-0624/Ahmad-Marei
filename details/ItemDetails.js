@@ -1,48 +1,53 @@
-import { data } from "../mock/data.js";
-
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   console.log(id, "id");
   if (id) {
-    const item = data.find((item) => item.id === parseInt(id));
-    console.log(item, "item");
-    if (item) {
-      document.querySelector(".details__title").innerText = item.topic;
-      document.querySelector(".details__subtitle").innerText = item.category;
-      document.querySelector(".details__rating").innerHTML = generateStars(
-        item.rating
-      );
-      document.querySelector(".details__description").innerText =
-        item.description;
-      document.querySelector(".details__image").src = `../${item.image}`;
-      document.querySelector(".details__image").alt = item.topic;
-      document.querySelector(".details__author a").innerText = item.name;
-      document.querySelector(".details__author strong").innerText = item.topic;
-      document.querySelector(
-        ".details__sub-title"
-      ).innerText = `${item.topic} Sub Topics`;
-      document.querySelector(".details__sub-list").innerHTML =
-        generateSubTopics(item.subtopics);
+    fetch(`https://tap-web-1.herokuapp.com/topics/details/${id}`)
+      .then((response) => response.json())
+      .then((item) => {
+        if (item) {
+          document.querySelector(".details__title").innerText = item.topic;
+          document.querySelector(".details__subtitle").innerText =
+            item.category;
+          document.querySelector(".details__rating").innerHTML = generateStars(
+            item.rating
+          );
+          document.querySelector(".details__description").innerText =
+            item.description;
+          document.querySelector(
+            ".details__image"
+          ).src = `/images/${item.image}`;
+          document.querySelector(".details__image").alt = item.topic;
+          document.querySelector(".details__author a").innerText = item.name;
+          document.querySelector(".details__author strong").innerText =
+            item.topic;
+          document.querySelector(
+            ".details__sub-title"
+          ).innerText = `${item.topic} Sub Topics`;
+          document.querySelector(".details__sub-list").innerHTML =
+            generateSubTopics(item.subtopics);
 
-      const addToFavoritesButton = document.getElementById("addToFavorites");
-      const buttonText = document.querySelector("#addToFavorites span");
-      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      const isItemInFavorites = favorites.find(
-        (favorite) => favorite.id === item.id
-      );
+          const addToFavoritesButton =
+            document.getElementById("addToFavorites");
+          const buttonText = document.querySelector("#addToFavorites span");
+          const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+          const isItemInFavorites = favorites.find(
+            (favorite) => favorite.id === item.id
+          );
 
-      buttonText.innerText = isItemInFavorites
-        ? "Remove from Favorites"
-        : "Add to Favorites";
+          buttonText.innerText = isItemInFavorites
+            ? "Remove from Favorites"
+            : "Add to Favorites";
 
-      addToFavoritesButton.addEventListener(
-        "click",
-        changeFavoriteButton.bind(null, item, buttonText)
-      );
-    } else {
-      document.querySelector(".details").innerText = "Item not found.";
-    }
+          addToFavoritesButton.addEventListener(
+            "click",
+            changeFavoriteButton.bind(null, item, buttonText)
+          );
+        } else {
+          document.querySelector(".details").innerText = "Item not found.";
+        }
+      });
   } else {
     document.querySelector(".details").innerText = "No item ID specified.";
   }

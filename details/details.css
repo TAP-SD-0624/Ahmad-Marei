@@ -4,6 +4,7 @@
 
 .details {
   position: relative;
+  flex: 1;
 }
 .details__container {
   max-width: 900px;
