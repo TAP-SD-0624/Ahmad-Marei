@@ -164,6 +164,7 @@ header {
 .navbar {
   padding-left: 8px !important;
   padding-right: 8px !important;
+  margin-bottom: 8px;
 }
 
 .truncate {
