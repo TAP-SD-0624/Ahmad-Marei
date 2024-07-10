@@ -124,15 +124,15 @@ document.addEventListener("DOMContentLoaded", function () {
     <a href="/details/ItemDetails.html?id=${encodeURIComponent(
       item.id
     )}" class="card-link">
-    <div class="card">
-    <img src="/images/${item.image}" alt="${item.topic}" class="card-image ">
-    <div class="card-content">
+    <div class="card no-border shadow-sm">
+    <img src="/images/${item.image}" alt="${item.topic}" class="card-img-top">
+    <div class="card-body">
       <h3 class="card-subtitle truncate">${item.category}</h3>
       <p class="card-title truncate">${item.topic}</p>
-      <div class="card-rating">
+      <div class="card-rating mt-4 d-flex align-item-center ">
         ${generateStars(item.rating)}
       </div>
-      <p class="card-author  ">Author: ${item.name}</p>
+      <p class="card-author mb-0 mt-2 ">Author: ${item.name}</p>
     </div>
     </div>
     </a>
@@ -147,11 +147,11 @@ document.addEventListener("DOMContentLoaded", function () {
     <a href="/details/ItemDetails.html?id=${encodeURIComponent(
       item.id
     )}" class="card-link">
-    <div class="card">
-    <img src="/images/${item.image}" alt="${item.topic}" class="card-image">
-    <div class="card-content">
+    <div class="card no-border shadow-sm">
+    <img src="/images/${item.image}" alt="${item.topic}" class="card-img-top">
+    <div class="card-body">
       <p class="card-title truncate">${item.topic}</p>
-      <div class="card-rating">
+      <div class="card-rating  d-flex align-item-center ">
         ${generateStars(item.rating)}
       </div>
     </div>
