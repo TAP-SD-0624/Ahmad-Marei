@@ -18,19 +18,17 @@
     />
   </head>
   <body>
-    <div id="loading" class="loading hidden">Loading...</div>
+    <!-- <div id="loading" class="loading hidden">Loading...</div> -->
     <header class="header">
       <nav class="navbar container">
         <div class="navbar__logo">Web Topics</div>
-        <div class="navbar__nav-buttons">
-          <div id="toggleMode" class="navbar__nav-button">
-            <ion-icon name="moon-outline"></ion-icon>
-            <button>Dark Mode</button>
-          </div>
-          <div class="navbar__nav-button" id="toggle-favorites">
-            <ion-icon name="heart-outline"></ion-icon>
-            <button>Favourites</button>
-          </div>
+        <div class="d-flex gap-2">
+          <button class="navbar__nav-button" id="toggleMode">
+            <ion-icon name="moon-outline"></ion-icon> <span>Dark Mode</span>
+          </button>
+          <button class="navbar__nav-button" id="toggle-favorites">
+            <ion-icon name="heart-outline"></ion-icon> <span>Favorites</span>
+          </button>
         </div>
       </nav>
       <section class="header__title-background">
@@ -42,8 +40,8 @@
         </div>
       </section>
     </header>
-    <main class="container main">
-      <div class="searchBar">
+    <main class="main">
+      <div class="searchBar container shadow-sm">
         <div class="searchBar__search">
           <ion-icon name="search-outline"></ion-icon>
           <input
@@ -71,7 +69,7 @@
         </div>
       </div>
       <p id="number-of-cards" class="container numOfCards"></p>
-      <div id="card-container"></div>
+      <div id="card-container" class="card-container container"></div>
     </main>
     <div class="details__footer">
       Developed with

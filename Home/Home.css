@@ -31,24 +31,10 @@ body {
   min-height: 100vh;
 }
 
-.container {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 16px;
-  box-sizing: border-box;
-}
-
 /* Header Navbar */
 
 header {
   background-color: var(--bg-default);
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
 }
 
 .navbar__logo {
@@ -59,34 +45,25 @@ header {
   cursor: default;
 }
 
-.navbar__nav-buttons {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+.btn-outline-dark {
+  border: solid var(--lines-color) !important;
+  padding: 0 8px !important;
 }
-.navbar__nav-buttons .navbar__nav-button {
-  padding: 0 8px;
+.navbar__nav-button {
+  padding: 4px 8px;
   border: solid var(--lines-color) 1px;
   border-radius: 4px;
   background-color: var(--bg-default);
   text-decoration: none;
   display: flex;
   align-items: center;
+  gap: 4px;
   z-index: 100;
   cursor: pointer;
-}
-.navbar__nav-buttons .navbar__nav-button button {
-  padding: 5px;
-  border: none;
   color: var(--body-text);
-  background-color: var(--bg-default);
   font-weight: var(--font-weight-light);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+  font-size: 14px;
 }
-
 /* Title */
 .header__title-background {
   position: relative;
@@ -160,6 +137,7 @@ header {
 .main {
   flex: 1;
   width: 100%;
+  background-color: var(--bg-body);
 }
 
 /* numOfCards */
@@ -173,25 +151,16 @@ header {
 }
 
 /* Card */
-
-#card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 16px;
-  padding: 0;
-  justify-content: space-between;
-  background-color: var(--bg-body);
-  margin-bottom: 32px;
-}
-
 .card {
-  background-color: var(--bg-default);
-  border: 1px solid var(--lines-color);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s;
+  background-color: var(--bg-default) !important;
 }
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 24px;
+}
+
 .truncate {
   white-space: nowrap;
   overflow: hidden;
@@ -201,41 +170,33 @@ header {
 .card-link {
   text-decoration: none;
 }
+.card.no-border {
+  border: none !important;
+  box-shadow: none !important;
+}
 
 .card:hover {
   transform: scale(1.05);
   cursor: pointer !important;
+  transition: transform 0.3s ease-in-out;
 }
 
-.card-image {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 0 15px 4px;
-  background-color: var(--bg-default);
+.card-img-top {
+  height: 150px !important;
 }
 
 .card-title {
   font-size: 14px;
   font-weight: var(--font-weight-bold);
-  color: var(--body-text);
+  color: var(--body-text) !important;
   margin-top: -4px;
 }
 
 .card-subtitle {
   font-size: 14px;
   font-weight: var(--font-weight-regular);
-  color: var(--body-text);
+  color: var(--body-text) !important;
   margin: 5px 0;
-}
-
-.card-rating {
-  display: flex;
-  align-items: center;
-  margin-top: 16px;
 }
 
 .card-rating ion-icon {
@@ -246,7 +207,6 @@ header {
   font-size: 14px;
   font-weight: var(--font-weight-light);
   color: var(--body-text);
-  margin-top: 10px;
 }
 
 .dark-mode {
@@ -351,8 +311,8 @@ header {
 .card__favorite .card-content {
   padding-bottom: 12px;
 }
-.card__favorite .card-image {
-  height: 80px;
+.card__favorite .card-img-top {
+  height: 80px !important;
 }
 .card__favorite.card-title {
   margin: 0;
@@ -434,7 +394,7 @@ header {
 
   .header__title-section p {
     font-size: 12px;
-    margin-top: -16px;
+    /* margin-top: -16px !important; */
     max-width: 90%;
   }
   .numOfCards {
