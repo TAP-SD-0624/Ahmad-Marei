@@ -70,15 +70,15 @@ header {
 
   background-color: var(--bg-default);
   overflow: hidden;
-  padding-top: 24px;
+  padding-top: 42px;
 }
 
 .header__title-section .header__content {
+  position: relative;
+  transform: translateX(30%);
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  left: 0%;
-  width: 25%;
 }
 
 .header__title-section::after {
@@ -122,9 +122,10 @@ header {
   font-size: 16px;
   font-weight: var(--font-weight-light);
   margin-bottom: 20px;
-  margin-top: -24px;
+  margin-top: -8px;
   color: var(--body-text);
   z-index: 100;
+  line-height: 16px !important;
 }
 
 .title-section input {
@@ -159,6 +160,10 @@ header {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 24px;
+}
+.navbar {
+  padding-left: 8px !important;
+  padding-right: 8px !important;
 }
 
 .truncate {
@@ -296,6 +301,7 @@ header {
   padding-bottom: 16px;
   width: 100%;
   bottom: 0;
+  color: var(--body-text);
 }
 .favorite-items h3 {
   margin-top: 0;
@@ -364,17 +370,13 @@ header {
   .searchBar__sort-by .searchBar__sort:first-child {
     border-left: none;
   }
-  .navbar__nav-buttons .navbar__nav-button {
-    padding: 4px 8px;
-  }
-  .navbar__nav-buttons .navbar__nav-button button {
+
+  .textButton {
     display: none;
   }
 
   .header__title-section .header__content {
-    margin: 0;
-    width: 100%;
-    padding: 0 16px;
+    transform: translateX(0%);
   }
 
   .header__title-section::after {
@@ -401,8 +403,13 @@ header {
     font-size: 18px;
     padding: 0;
   }
+  .header__title-background {
+    padding-top: 32px;
+  }
 }
-
+.details__footer.home_footer {
+  background-color: var(--bg-body);
+}
 @media only screen and (min-width: 769px) and (max-width: 1200px) {
   .searchBar__search {
     width: 60%;
@@ -415,12 +422,6 @@ header {
   }
   .searchBar__sort-by .sort {
     padding: 8px;
-  }
-
-  .header__title-section .header__content {
-    margin: 0 auto;
-    width: 60%;
-    padding: 0 16px;
   }
 
   .header__title-section::after {

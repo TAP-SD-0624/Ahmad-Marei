@@ -20,21 +20,23 @@
   <body>
     <div id="loading" class="loading hidden">Loading...</div>
     <header class="header">
-      <nav class="navbar container-xxl">
+      <nav class="navbar container">
         <div class="navbar__logo">
           <a href="/index.html" class="navbar__logo logo"> Web Topics </a>
         </div>
         <div class="d-flex gap-2">
           <button class="navbar__nav-button" id="toggleMode">
-            <ion-icon name="moon-outline"></ion-icon> <span>Dark Mode</span>
+            <ion-icon name="moon-outline"></ion-icon>
+            <span class="textButton">Dark Mode</span>
           </button>
           <button class="navbar__nav-button" id="toggle-favorites">
-            <ion-icon name="heart-outline"></ion-icon> <span>Favorites</span>
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="textButton">Favorites</span>
           </button>
         </div>
       </nav>
       <section class="header__title-background">
-        <div class="header__title-section">
+        <div class="header__title-section container">
           <div class="header__content">
             <h2>Welcome to our website!</h2>
             <p>We have a new design that’s fresh, modern, and easy to use.</p>
@@ -45,7 +47,7 @@
 
     <div class="details">
       <div class="details__header-container">
-        <div class="details__container">
+        <div class="details__container container">
           <div class="details__header">
             <h4 class="details__subtitle"></h4>
             <h2 class="details__title"></h2>
@@ -72,10 +74,10 @@
           </div>
         </div>
       </div>
-      <div class="details__main-content details__container">
+      <div class="details__main-content details__container container">
         <div class="details__sub-topics-container">
           <div class="details__sub-topics">
-            <h2 class="details__sub-title"></h2>
+            <h3 class="details__sub-title"></h3>
             <ul class="details__sub-list"></ul>
           </div>
         </div>
@@ -92,7 +94,7 @@
 
     <article class="favorite-items hidden" id="favorite_items-container">
       <div class="container">
-        <h3>Favorite Items</h3>
+        <h3>My Favorite Topics</h3>
         <div class="favorite-items__container" id="favorite_items"></div>
       </div>
     </article>
